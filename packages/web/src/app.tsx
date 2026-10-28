@@ -9,6 +9,7 @@ import { Shell } from "./components/layout";
 import { EmptyState } from "./components/ui";
 import { BuilderPage } from "./pages/builder";
 import { DataPage } from "./pages/data";
+import { HealthPage } from "./pages/health";
 import { LivePage } from "./pages/live";
 import { ReportPage } from "./pages/report";
 import { ReportsPage } from "./pages/reports";
@@ -22,9 +23,10 @@ export function App() {
         <Route path="/builder" component={BuilderPage} />
         <Route path="/live" component={LivePage} />
         <Route path="/data" component={DataPage} />
+        <Route path="/health" component={HealthPage} />
         <Route>
           <EmptyState title="Nothing at this address">
-            <p>Pick a page from the navigation above. Reports, Builder, Live, or Data.</p>
+            <p>Pick a page from the navigation above. Reports, Builder, Live, Health, or Data.</p>
           </EmptyState>
         </Route>
       </Switch>
