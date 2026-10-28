@@ -27,16 +27,21 @@
 
 :root {
   color-scheme: light;
+  --madx-grad: linear-gradient(90deg, #4285f4 0%, #9b72cb 55%, #d96570 100%);
+  --madx-accent: #7b5cd6;
+  --madx-accent-ink: #5b3fc4;
+  --madx-hover: linear-gradient(90deg, #4285f4 0%, #9b72cb 55%, #d96570 100%);
+  --madx-glow: 0 6px 24px -10px rgba(123,92,214,.45), 0 2px 10px -6px rgba(66,133,244,.35);
   --background: #fcfcfb;
   --foreground: #1c1a18;
   --card: #f8f8f7;
   --card-foreground: #1c1a18;
   --popover: #f8f8f7;
   --popover-foreground: #1c1a18;
-  --primary: #ff7429;
-  --primary-ink: #c2410c;
-  --primary-foreground: #1c1a18;
-  --primary-hover: #f86414;
+  --primary: #7b5cd6;
+  --primary-ink: #5b3fc4;
+  --primary-foreground: #fff;
+  --primary-hover: #6749c0;
   --secondary: #f3f3f1;
   --secondary-foreground: #1c1a18;
   --muted: #f3f3f1;
@@ -46,30 +51,35 @@
   --destructive: #f23645;
   --border: #e8e7e4;
   --input: #e8e7e4;
-  --ring: #ff7429;
+  --ring: #7b5cd6;
   --radius: 0.5rem;
   --faint: #686562;
   --success: #237a48;
   --warning: #8a5c00;
   --chart-1: #0d8ed6;
   --chart-track: #f3f3f1;
-  --sky-400: #ff7429;
+  --sky-400: #7b5cd6;
   --purple-500: #705477;
-  --pink-500: #ff6a2b;
+  --pink-500: #7b5cd6;
 }
 
 .dark {
   color-scheme: dark;
+  --madx-grad: linear-gradient(90deg, #4285f4 0%, #9b72cb 55%, #d96570 100%);
+  --madx-accent: #7b5cd6;
+  --madx-accent-ink: #2e1d6b;
+  --madx-hover: linear-gradient(90deg, #4285f4 0%, #9b72cb 55%, #d96570 100%);
+  --madx-glow: 0 6px 24px -10px rgba(123,92,214,.45), 0 2px 10px -6px rgba(66,133,244,.35);
   --background: #7a8184;
   --foreground: #0f1214;
   --card: #a1a9ab;
   --card-foreground: #0f1214;
   --popover: #a1a9ab;
   --popover-foreground: #0f1214;
-  --primary: #ff7429;
-  --primary-ink: #ff7429;
-  --primary-foreground: #1c1a18;
-  --primary-hover: #f86414;
+  --primary: #7b5cd6;
+  --primary-ink: #2e1d6b;
+  --primary-foreground: #fff;
+  --primary-hover: #6749c0;
   --secondary: #8e9598;
   --secondary-foreground: #0f1214;
   --muted: #8e9598;
@@ -78,9 +88,23 @@
   --accent-foreground: #0f1214;
   --border: #687073;
   --input: #687073;
-  --ring: #ff7429;
+  --ring: #7b5cd6;
   --faint: #22282b;
   --chart-track: #8e9598;
+}
+
+button.bg-primary,
+a[role="button"].bg-primary,
+.madx-primary-button {
+  background-color: transparent !important;
+  background-image: var(--madx-grad) !important;
+  color: #fff !important;
+  box-shadow: var(--madx-glow);
+}
+button.bg-primary:hover,
+a[role="button"].bg-primary:hover,
+.madx-primary-button:hover {
+  filter: brightness(.96);
 }
 
 @theme inline {
