@@ -140,11 +140,13 @@ export function buildApp(ctx: CliContext): Hono {
   if (existsSync(join(webDist, "index.html"))) {
     const indexHtml = readFileSync(join(webDist, "index.html"), "utf8");
     const MIME: Record<string, string> = {
-      ".js": "text/javascript",
+      ".js": "application/javascript",
       ".css": "text/css",
       ".svg": "image/svg+xml",
+      ".png": "image/png",
       ".woff2": "font/woff2",
       ".txt": "text/plain; charset=utf-8",
+      ".webmanifest": "application/manifest+json",
     };
     const serveFromDist = (c: Context) => {
       const path = normalize(join(webDist, c.req.path));
@@ -158,6 +160,10 @@ export function buildApp(ctx: CliContext): Hono {
     };
     app.get("/assets/*", serveFromDist);
     app.get("/fonts/*", serveFromDist);
+    app.get("/icons/*", serveFromDist);
+    app.get("/manifest.webmanifest", serveFromDist);
+    app.get("/pwa-register.js", serveFromDist);
+    app.get("/sw.js", serveFromDist);
     app.get("*", (c) => c.html(indexHtml));
   } else {
     app.get("/", (c) =>

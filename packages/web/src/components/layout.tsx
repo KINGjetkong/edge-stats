@@ -8,22 +8,7 @@ import { Link, useLocation } from "wouter";
 import { api } from "../lib/api";
 import { requestDslFocus, useCachedAsync } from "../lib/hooks";
 import { cn } from "../lib/utils";
-
-/*
-  The LuxAlgo mark. The name and logo are LuxAlgo trademarks and are not
-  covered by the MIT license: see TRADEMARKS.md before reusing them in a
-  fork or derivative.
-*/
-function Mark() {
-  return (
-    <svg viewBox="0 0 41 37" className="h-4 w-auto text-foreground" aria-hidden="true">
-      <g fill="currentColor">
-        <path d="M36.217 34.646l4.139-7.231L25.868 2.108 11.381 27.415h8.279l6.209-10.845z" />
-        <path d="M31.042 29.224 8.267 29.22 24.833.3h-8.277L0 29.216l4.137 7.237h31.045z" />
-      </g>
-    </svg>
-  );
-}
+import { ThemeToggle } from "./theme-toggle";
 
 const NAV = [
   { href: "/", label: "Reports", match: (p: string) => p === "/" || p.startsWith("/report/") },
@@ -79,12 +64,12 @@ export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-6xl items-center gap-7 px-6">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Mark />
-            <span className="text-[15px] font-medium tracking-tight">Edge Stats</span>
+        <div className="mx-auto flex min-h-14 max-w-6xl flex-wrap items-center gap-3 px-3 py-2 sm:flex-nowrap sm:gap-5 sm:px-6 sm:py-0">
+          <Link href="/" className="flex min-w-0 items-center gap-2.5">
+            <img className="h-5 w-5 shrink-0" src="http://127.0.0.1:7790/_madx/madx-mark.svg" alt="" />
+            <span className="truncate text-[13px] font-medium tracking-tight sm:text-[15px]">Edge Stats · MADX SIGMA6</span>
           </Link>
-          <nav className="flex items-center gap-1" aria-label="Primary">
+          <nav className="order-3 flex w-full items-center gap-1 overflow-x-auto sm:order-none sm:w-auto" aria-label="Primary">
             {NAV.map((item) => {
               const active = item.match(location);
               return (
@@ -94,7 +79,7 @@ export function Shell({ children }: { children: ReactNode }) {
                   className={cn(
                     "rounded-full px-3 py-1.5 text-[13px] font-medium transition-colors duration-150",
                     active
-                      ? "bg-white/[0.06] text-foreground"
+                      ? "bg-muted text-foreground"
                       : "text-muted-foreground hover:text-foreground",
                   )}
                 >
@@ -103,14 +88,15 @@ export function Shell({ children }: { children: ReactNode }) {
               );
             })}
           </nav>
-          <div className="ml-auto flex items-center gap-4">
+          <div className="ml-auto flex items-center gap-3">
             <span className="hidden items-center gap-1.5 font-mono text-[11px] text-faint sm:inline-flex">
               <kbd className="rounded-md border border-border bg-white/[0.03] px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
                 /
               </kbd>
               query
             </span>
-            <HealthChip />
+            <span className="hidden lg:inline-flex"><HealthChip /></span>
+            <ThemeToggle />
           </div>
         </div>
       </header>

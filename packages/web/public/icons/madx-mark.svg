@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-labelledby="title">
+  <title id="title">MADX sigma mark</title>
+  <rect width="32" height="32" rx="4" fill="#ff4801"/>
+  <path d="M23 7H8v3h9.2l-7.8 6 7.8 6H8v3h15v-3l-8.4-6L23 10z" fill="#1c1a18"/>
+</svg>
