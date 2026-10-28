@@ -35,20 +35,17 @@ const EXPLAIN: Record<string, string> = {
   sample_size: "How many trades the checks are based on. Few trades make every other number shaky.",
 };
 
-function InfoTip({ text }: { text: string }) {
+function InfoButton({ open, onToggle, label }: { open: boolean; onToggle: () => void; label: string }) {
   return (
-    <details className="group relative inline-block">
-      <summary
-        className="inline-flex cursor-pointer list-none items-center text-faint hover:text-foreground [&::-webkit-details-marker]:hidden"
-        aria-label="What does this mean?"
-        title={text}
-      >
-        <Info className="size-3.5" aria-hidden="true" />
-      </summary>
-      <div className="absolute left-0 z-20 mt-1.5 w-64 rounded-lg border border-border bg-card p-3 text-xs leading-relaxed text-muted-foreground shadow-lg">
-        {text}
-      </div>
-    </details>
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={open}
+      aria-label={`What does ${label} mean?`}
+      className="inline-flex size-6 shrink-0 items-center justify-center rounded-full text-faint hover:text-foreground"
+    >
+      <Info className="size-3.5" aria-hidden="true" />
+    </button>
   );
 }
 
@@ -63,15 +60,22 @@ function LightBadge({ light }: { light: Light }) {
 }
 
 function LightCard({ item }: { item: HealthLight }) {
+  const [explain, setExplain] = useState(false);
+  const meaning = EXPLAIN[item.id] ?? item.label;
   return (
     <Panel className="p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="flex min-w-0 items-center gap-1.5 text-sm font-medium">
           <span className="truncate">{item.label}</span>
-          <InfoTip text={EXPLAIN[item.id] ?? item.label} />
+          <InfoButton open={explain} onToggle={() => setExplain((v) => !v)} label={item.label} />
         </div>
         <LightBadge light={item.light} />
       </div>
+      {explain ? (
+        <p className="mt-2 rounded-lg border border-border bg-white/[0.03] p-3 text-xs leading-relaxed text-muted-foreground">
+          {meaning}
+        </p>
+      ) : null}
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.plain}</p>
       <details className="mt-3 text-xs text-faint">
         <summary className="cursor-pointer select-none">More details</summary>
