@@ -26,25 +26,26 @@
 }
 
 :root {
+  /* Cloudflare OS (Kumo) dark-mode surfaces + orange data hue, matching the shell. */
   /* shadcn semantic slots, data-canvas values. */
-  --background: #000000;
-  --foreground: #ededed;
-  --card: #0a0a0a;
-  --card-foreground: #ededed;
-  --popover: #0f0f0f;
-  --popover-foreground: #ededed;
-  --primary: #ededed;
-  --primary-foreground: #0a0a0a;
+  --background: oklch(0.115 0.012 285);
+  --foreground: oklch(0.92 0.01 285);
+  --card: oklch(0.155 0.011 285);
+  --card-foreground: oklch(0.92 0.01 285);
+  --popover: oklch(0.155 0.011 285);
+  --popover-foreground: oklch(0.92 0.01 285);
+  --primary: oklch(0.92 0.01 285);
+  --primary-foreground: oklch(0.155 0.011 285);
   --secondary: rgba(255, 255, 255, 0.08);
-  --secondary-foreground: #ededed;
+  --secondary-foreground: oklch(0.92 0.01 285);
   --muted: rgba(255, 255, 255, 0.06);
-  --muted-foreground: #a0a0a0;
+  --muted-foreground: oklch(0.66 0.02 285);
   --accent: rgba(255, 255, 255, 0.06);
-  --accent-foreground: #ededed;
+  --accent-foreground: oklch(0.92 0.01 285);
   --destructive: #f23645;
-  --border: rgba(255, 255, 255, 0.1);
+  --border: oklch(0.34 0.022 285);
   --input: rgba(255, 255, 255, 0.14);
-  --ring: rgba(255, 255, 255, 0.35);
+  --ring: #b84e00;
   --radius: 0.5rem;
 
   /* Text ladder below muted-foreground: labels, fingerprints, footnotes. */
@@ -57,7 +58,7 @@
   /* The one data hue (landing sky-500), validated against the #0a0a0a
      card surface (OKLCH band, chroma, contrast). Comparisons are told
      apart by their labels, never by a second hue. */
-  --chart-1: #0d8ed6;
+  --chart-1: #ff8a5c;
   --chart-track: rgba(255, 255, 255, 0.06);
 
   /* Brand hues the prism hairline mixes from (see landing-page /brand). */
